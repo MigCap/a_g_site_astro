@@ -1,0 +1,24 @@
+---
+// import { about } from '@/i18n/ui.i18n';
+import "@/styles/global.css";
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+}
+
+const {
+  title = `Alejandro Guijarro | Personal Site`,
+  description = `Alejandro Guijarro Website`,
+} = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+<meta name="description" property="og:description" content={description} />
+
+<meta name="theme-color" content="#000000" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.ico" />

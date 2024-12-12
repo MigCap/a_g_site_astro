@@ -1,0 +1,198 @@
+/* Global variables */
+:root {
+	/* Colors */
+	--gray-0: #090b11;
+	--gray-50: #141925;
+	--gray-100: #283044;
+	--gray-200: #3d4663;
+	--gray-300: #505d84;
+	--gray-400: #6474a2;
+	--gray-500: #8490b5;
+	--gray-600: #a3acc8;
+	--gray-700: #c3cadb;
+	--gray-800: #e3e6ee;
+	--gray-900: #f3f4f7;
+	--gray-999-basis: 0, 0%, 100%;
+	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
+	--gray-999: #ffffff;
+
+	--accent-light: #c561f6;
+	--accent-regular: #7611a6;
+	--accent-dark: #1c0056;
+	--accent-overlay: hsla(280, 89%, 67%, 0.33);
+	--accent-subtle-overlay: var(--accent-overlay);
+	--accent-text-over: var(--gray-999);
+
+	--link-color: var(--accent-regular);
+
+	/* Gradients */
+	--gradient-stop-1: var(--accent-light);
+	--gradient-stop-2: var(--accent-regular);
+	--gradient-stop-3: var(--accent-dark);
+	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 150%);
+	--gradient-accent: linear-gradient(150deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3));
+	--gradient-accent-orange: linear-gradient(150deg,
+			#ca7879,
+			var(--accent-regular),
+			var(--accent-dark));
+	--gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
+
+	/* Shadows */
+	--shadow-sm: 0px 6px 3px rgba(9, 11, 17, 0.01), 0px 4px 2px rgba(9, 11, 17, 0.01),
+		0px 2px 2px rgba(9, 11, 17, 0.02), 0px 0px 1px rgba(9, 11, 17, 0.03);
+	--shadow-md: 0px 28px 11px rgba(9, 11, 17, 0.01), 0px 16px 10px rgba(9, 11, 17, 0.03),
+		0px 7px 7px rgba(9, 11, 17, 0.05), 0px 2px 4px rgba(9, 11, 17, 0.06);
+	--shadow-lg: 0px 62px 25px rgba(9, 11, 17, 0.01), 0px 35px 21px rgba(9, 11, 17, 0.05),
+		0px 16px 16px rgba(9, 11, 17, 0.1), 0px 4px 9px rgba(9, 11, 17, 0.12);
+
+	/* Text Sizes */
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-md: 1.125rem;
+	--text-lg: 1.25rem;
+	--text-xl: 1.625rem;
+	--text-2xl: 2.125rem;
+	--text-3xl: 2.625rem;
+	--text-4xl: 3.5rem;
+	--text-5xl: 4.5rem;
+
+	/* Fonts */
+	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-body: 'Public Sans', var(--font-system);
+	--font-brand: Rubik, var(--font-system);
+	--font-primary: '"Arial", sans-serif';
+	--font-secondary: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+
+	/* Transitions */
+	--theme-transition: 0.2s ease-in-out;
+	--transition: all 0.25s cubic-bezier(0.3, 0, 0.4, 1);
+
+	/* Nav */
+	--nav-width: 100px;
+	--nav-height: calc(50px + 1.5rem);
+}
+
+#root {
+	min-height: 100%;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+body {
+	min-height: 100%;
+	overflow-x: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: var(--font-secondary);
+	font-size: var(--text-base);
+	background-color: white;
+	color: var(--gray-300);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	letter-spacing: -.025em;
+	margin: 0 0 10px;
+	font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 900;
+}
+
+p {
+	margin: 0 0 10px;
+}
+
+ol,
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a {
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	transition: var(--transition);
+	cursor: pointer;
+}
+
+img {
+	/* width: 100%; */
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+svg {
+	fill: currentColor;
+	vertical-align: middle;
+}
+
+input {
+	border-radius: 0;
+	outline: 0;
+
+	&::placeholder {
+		opacity: 0.7;
+	}
+
+	&:focus,
+	&:active {
+		&::placeholder {
+			opacity: 0.5;
+		}
+	}
+}
+
+button {
+	display: inline-block;
+	color: var(--gray-800);
+	font-family: var(--font-secondary);
+	font-size: var(--text-base);
+	font-weight: 700;
+	border: 0;
+	/* padding: 10px 20px; */
+	cursor: pointer;
+	transition: var(--transition);
+
+	&:hover,
+	&:focus {
+		outline: 0;
+	}
+}
+
+@media screen and (max-height: 368px) {
+	.img-wrapper {
+		padding-top: 50px;
+	}
+}
+
+@media screen and (max-width: 768px) {}

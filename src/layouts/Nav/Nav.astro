@@ -1,0 +1,29 @@
+---
+import "./nav.css";
+---
+
+<nav-bar id="nav-bar">
+  <div id="nav-bar_container" class="active">
+    <a href="/" class="nav-bar_title">
+      <h3>ALEJANDRO GUIJARRO</h3>
+    </a>
+    <div class="nav-bar_container">
+      <ul>
+        <li>
+          <a href="/works">Works</a>
+        </li>
+        <li>
+          <a href="/bio">Bio</a>
+        </li>
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav-bar>
+
+<script>
+  import { NavBar } from "./Nav.js";
+  new NavBar();
+</script>
