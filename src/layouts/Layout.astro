@@ -5,9 +5,10 @@ import NavBar from "./Nav/Nav.astro";
 interface Props {
   title?: string | undefined;
   description?: string | undefined;
+  isWorkPage?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, isWorkPage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,9 +21,9 @@ const { title, description } = Astro.props;
     <MainHead title={title} description={description} />
   </head>
   <body>
-    <div class="app-container">
-      <div class="site-wrapper">
-        <NavBar />
+    <div class={!isWorkPage ? "app-container" : ""}>
+      <div class={!isWorkPage ? "site-wrapper" : ""}>
+        {!isWorkPage && <NavBar />}
         <slot />
       </div>
     </div>

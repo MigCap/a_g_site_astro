@@ -151,10 +151,12 @@ img {
 	vertical-align: middle;
 }
 
-svg {
+/* svg {
 	fill: currentColor;
 	vertical-align: middle;
 }
+
+*/
 
 input {
 	border-radius: 0;
