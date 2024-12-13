@@ -143,6 +143,11 @@ a {
 	color: inherit;
 	transition: var(--transition);
 	cursor: pointer;
+
+	:hover {
+		color: var(--gray-700);
+		stroke: var(--gray-700);
+	}
 }
 
 img {

@@ -61,13 +61,29 @@ const resolvedImages = work.images.map((img) => {
 });
 
 const currentImage = resolvedImages[workId];
+const currentImageCaption = currentImage.caption;
+const hasCaptionSeparator = currentImageCaption.indexOf("-") > 0;
+const startString = currentImageCaption?.substring(
+  0,
+  currentImageCaption.indexOf("-")
+);
+const endString = currentImageCaption?.substring(
+  currentImageCaption.indexOf("-"),
+  currentImageCaption.length
+);
 const prevImageIndex = workId === 0 ? resolvedImages.length - 1 : workId - 1;
 const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
 ---
 
 <Layout isWorkPage={true}>
   <div class="work_container">
-    <div class="wor_img_wrapper">
+    <div
+      class="wor_img_wrapper"
+      id="swipe-container"
+      data-work-id={work.id}
+      data-prev-index={prevImageIndex}
+      data-next-index={nextImageIndex}
+    >
       <Image
         src={currentImage.source.regular}
         alt={currentImage.alt}
@@ -82,12 +98,88 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
         <ChevronRight />
       </a>
     </div>
-    <h1>{title} - {currentImage.caption}</h1>
-    <a href={`/works`} style={{ padding: "1rem 0" }}>
+    <h3 class="img_title">{title}</h3>
+    <div class="img_caption">
+      <p>
+        {
+          hasCaptionSeparator ? (
+            <>
+              <strong>{startString}</strong>
+              {endString}
+            </>
+          ) : (
+            <span>{currentImageCaption}</span>
+          )
+        }
+      </p>
+    </div>
+    <a href={`/works`}>
       <Square />
     </a>
   </div>
 </Layout>
+
+<script type="module">
+  let startX = 0;
+  let endX = 0;
+  let swipeThreshold = 50; // Minimum distance (in px) for swipe detection
+  let isSwiping = false;
+
+  const swipeContainer = document.getElementById("swipe-container");
+
+  if (swipeContainer) {
+    swipeContainer.addEventListener("touchstart", handleTouchStart, false);
+    swipeContainer.addEventListener("touchmove", handleTouchMove, false);
+    swipeContainer.addEventListener("touchend", handleTouchEnd, false);
+  }
+
+  // Get the data attributes from the swipe container element
+  const workId = swipeContainer?.getAttribute("data-work-id");
+  const prevIndex = parseInt(
+    swipeContainer?.getAttribute("data-prev-index") ?? "0"
+  );
+  const nextIndex = parseInt(
+    swipeContainer?.getAttribute("data-next-index") ?? "0"
+  );
+
+  function handleTouchStart(e) {
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    isSwiping = true; // Indicate that a swipe has started
+    // console.log("Touch started", startX); // Debugging log
+  }
+
+  function handleTouchMove(e) {
+    if (!isSwiping) return; // Prevent unnecessary move events
+    const touch = e.touches[0];
+    endX = touch.clientX;
+    // console.log("Touch moved", endX); // Debugging log
+  }
+
+  function handleTouchEnd() {
+    if (!isSwiping) return; // Prevent unnecessary end events
+    const swipeDistance = startX - endX;
+    // console.log("Touch ended", swipeDistance); // Debugging log
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swipe left (next image)
+        // console.log("Swipe left, going to next image");
+        if (workId) {
+          window.location.href = `/works/${workId}/${nextIndex}`;
+        }
+      } else {
+        // Swipe right (previous image)
+        // console.log("Swipe right, going to previous image");
+        if (workId) {
+          window.location.href = `/works/${workId}/${prevIndex}`;
+        }
+      }
+    }
+
+    isSwiping = false; // Reset swipe state
+  }
+</script>
 
 <style>
   .work_container {
@@ -99,7 +191,7 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
   .work_navigation {
     display: flex;
     justify-content: center;
-    gap: 5rem;
+    gap: 3rem;
     padding: 1rem 0;
   }
   .wor_img_wrapper {
@@ -113,5 +205,14 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+  .img_title {
+    font-size: 0.7rem;
+    font-weight: 900;
+    margin: 1rem 0 0 0;
+  }
+  .img_caption {
+    font-size: 0.7rem;
+    margin: 1rem 0;
   }
 </style>

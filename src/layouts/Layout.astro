@@ -45,4 +45,10 @@ const { title, description, isWorkPage = false } = Astro.props;
   .site-wrapper {
     padding-top: calc(var(--nav-height) + 1.5rem);
   }
+
+  @media (max-width: 75em) {
+    .site-wrapper {
+      padding-top: calc(var(--nav-height) + 0.5rem);
+    }
+  }
 </style>
