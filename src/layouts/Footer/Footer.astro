@@ -3,7 +3,6 @@ import Instagram from "@/components/icons/Instagram.astro";
 import "./footer.css";
 
 const { url } = Astro;
-const isActive = (path: string): boolean => url.pathname === path;
 ---
 
 <footer id="footer_container">
@@ -24,16 +23,18 @@ const isActive = (path: string): boolean => url.pathname === path;
     <nav class="footer_nav">
       <ul>
         <li>
-          <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+          <a href="/" class={url.pathname === "/" ? "active" : ""}>Home</a>
         </li>
         <li>
-          <a href="/works" class={isActive("/works") ? "active" : ""}>Works</a>
+          <a href="/works" class={url.pathname === "/works" ? "active" : ""}
+            >Works</a
+          >
         </li>
         <li>
-          <a href="/bio" class={isActive("/bio") ? "active" : ""}>Bio</a>
+          <a href="/bio" class={url.pathname === "/bio" ? "active" : ""}>Bio</a>
         </li>
         <li>
-          <a href="/contact" class={isActive("/contact") ? "active" : ""}
+          <a href="/contact" class={url.pathname === "/contact" ? "active" : ""}
             >Contact</a
           >
         </li>

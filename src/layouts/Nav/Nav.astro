@@ -2,7 +2,6 @@
 import "./nav.css";
 
 const { url } = Astro;
-const isActive = (path: string): boolean => url.pathname === path;
 ---
 
 <nav-bar id="nav-bar">
@@ -13,13 +12,15 @@ const isActive = (path: string): boolean => url.pathname === path;
     <div class="nav-bar_list_container">
       <ul>
         <li>
-          <a href="/works" class={isActive("/works") ? "active" : ""}>Works</a>
+          <a href="/works" class={url.pathname === "/works" ? "active" : ""}
+            >Works</a
+          >
         </li>
         <li>
-          <a href="/bio" class={isActive("/bio") ? "active" : ""}>Bio</a>
+          <a href="/bio" class={url.pathname === "/bio" ? "active" : ""}>Bio</a>
         </li>
         <li>
-          <a href="/contact" class={isActive("/contact") ? "active" : ""}
+          <a href="/contact" class={url.pathname === "/contact" ? "active" : ""}
             >Contact</a
           >
         </li>
