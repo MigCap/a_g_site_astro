@@ -146,31 +146,26 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
     const touch = e.touches[0];
     startX = touch.clientX;
     isSwiping = true; // Indicate that a swipe has started
-    // console.log("Touch started", startX); // Debugging log
   }
 
   function handleTouchMove(e) {
     if (!isSwiping) return; // Prevent unnecessary move events
     const touch = e.touches[0];
     endX = touch.clientX;
-    // console.log("Touch moved", endX); // Debugging log
   }
 
   function handleTouchEnd() {
     if (!isSwiping) return; // Prevent unnecessary end events
     const swipeDistance = startX - endX;
-    // console.log("Touch ended", swipeDistance); // Debugging log
 
     if (Math.abs(swipeDistance) > swipeThreshold) {
       if (swipeDistance > 0) {
         // Swipe left (next image)
-        // console.log("Swipe left, going to next image");
         if (workId) {
           window.location.href = `/works/${workId}/${nextIndex}`;
         }
       } else {
         // Swipe right (previous image)
-        // console.log("Swipe right, going to previous image");
         if (workId) {
           window.location.href = `/works/${workId}/${prevIndex}`;
         }
