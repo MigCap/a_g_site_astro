@@ -1,0 +1,70 @@
+---
+import { Picture } from "astro:assets";
+import type { IWork } from "@/constants/images";
+import "./work-gallery.css";
+
+interface Props {
+  work: IWork;
+}
+
+const { work } = Astro.props;
+
+const images: any = import.meta.glob(
+  "../../assets/images/**/**/*.{jpg,png,webp}",
+  {
+    eager: true,
+  }
+);
+
+const resolvedImages = work.images.map((img) => {
+  const regularSrc = images[`../../${img.source.regular}`]?.default;
+  const thumbnailSrc = images[`../../${img.source.thumbnail}`]?.default;
+
+  if (!regularSrc || !thumbnailSrc) {
+    console.error(
+      `Image not found for ${img.source.regular}. Does not exist in glob: "src/assets/images/**/**/*.{jpg,png,webp}"`
+    );
+  }
+
+  return {
+    ...img,
+    source: {
+      regular: regularSrc,
+      thumbnail: thumbnailSrc,
+    },
+  };
+});
+---
+
+<div class="work-gallery">
+  <h1>{work.title}</h1>
+  <div class="work-gallery_container">
+    {
+      resolvedImages?.map(({ alt, source, height }, index: number) => {
+        if (index < 12) {
+          return (
+            <div class="work-gallery_img-wrapper">
+              <a href={`/works/${work.id}/${index}`}>
+                {/* <img
+                  src={source.thumbnail.src}
+                  alt={alt}
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  class="work_img"
+                /> */}
+                <Picture
+                  src={source.thumbnail}
+                  formats={["avif", "webp"]}
+                  alt={alt}
+                  class="work_img"
+                />
+              </a>
+            </div>
+          );
+        }
+        return null;
+      })
+    }
+  </div>
+</div>

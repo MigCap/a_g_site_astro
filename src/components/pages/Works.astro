@@ -1,0 +1,13 @@
+---
+import { works } from "@/constants/images";
+import Main from "@/components/layouts/Main.astro";
+import WorkGallery from "../WorkGallery/WorkGallery.astro";
+---
+
+<Main>
+  {
+    Object.values(works).map((work) => {
+      return <WorkGallery work={work} />;
+    })
+  }
+</Main>

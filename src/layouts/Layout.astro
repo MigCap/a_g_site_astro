@@ -1,6 +1,6 @@
 ---
 import MainHead from "./MainHead.astro";
-import Nav from "./Nav/Nav.astro";
+import NavBar from "./Nav/Nav.astro";
 
 interface Props {
   title?: string | undefined;
@@ -22,7 +22,7 @@ const { title, description } = Astro.props;
   <body>
     <div class="app-container">
       <div class="site-wrapper">
-        <Nav />
+        <NavBar />
         <slot />
       </div>
     </div>
