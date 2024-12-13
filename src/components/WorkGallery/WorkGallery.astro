@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import type { IWork } from "@/constants/images";
 import "./work-gallery.css";
 
@@ -53,12 +53,18 @@ const resolvedImages = work.images.map((img) => {
                   loading="lazy"
                   class="work_img"
                 /> */}
-                <Picture
+                <Image
+                  src={source.thumbnail}
+                  alt={alt}
+                  class="work_img"
+                  loading="lazy"
+                />
+                {/* <Picture
                   src={source.thumbnail}
                   formats={["avif", "webp"]}
                   alt={alt}
                   class="work_img"
-                />
+                /> */}
               </a>
             </div>
           );
@@ -68,3 +74,26 @@ const resolvedImages = work.images.map((img) => {
     }
   </div>
 </div>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Image is above the fold, add eager loading attribute
+          (entry.target as HTMLImageElement).loading = "eager";
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px",
+      threshold: 0.5,
+    }
+  );
+
+  const images = document.querySelectorAll("img");
+  images.forEach((image) => {
+    observer.observe(image);
+  });
+</script>
