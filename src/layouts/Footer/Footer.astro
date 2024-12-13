@@ -1,0 +1,72 @@
+---
+import Instagram from "@/components/icons/Instagram.astro";
+import "./footer.css";
+
+const { url } = Astro;
+const isActive = (path: string): boolean => url.pathname === path;
+---
+
+<footer id="footer_container">
+  <section class="footer_section">
+    <div class="footer_social-icons">
+      <a
+        href="https://www.instagram.com/alejandroguijarrostudio/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Go to Alejandro Guijarro Instagram profile"
+      >
+        <Instagram />
+      </a>
+    </div>
+    <div class="footer_back-to-top">
+      <button id="back-to-top-btn">Back to Top &uarr;</button>
+    </div>
+    <nav class="footer_nav">
+      <ul>
+        <li>
+          <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+        </li>
+        <li>
+          <a href="/works" class={isActive("/works") ? "active" : ""}>Works</a>
+        </li>
+        <li>
+          <a href="/bio" class={isActive("/bio") ? "active" : ""}>Bio</a>
+        </li>
+        <li>
+          <a href="/contact" class={isActive("/contact") ? "active" : ""}
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="footer_rights">
+      <p>
+        &copy; {new Date().getFullYear()} Alejandro Guijarro All Rights Reserved.
+        Designed & built by{" "}
+        <a
+          href="https://www.miguelcapellan.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Go to site builder site"
+        >
+          MCV
+        </a>
+      </p>
+    </div>
+  </section>
+</footer>
+
+<script>
+  function smoothScrollTo(position: number): void {
+    window.scrollTo({ top: position, behavior: "smooth" });
+  }
+
+  const backToTopBtnId = "back-to-top-btn";
+  const backToTopBtnElement = document.getElementById(backToTopBtnId);
+
+  if (!backToTopBtnElement) {
+    console.error(`No element with id: ${backToTopBtnId}`);
+  }
+
+  backToTopBtnElement?.addEventListener("click", () => smoothScrollTo(0));
+</script>

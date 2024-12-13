@@ -45,14 +45,6 @@ const resolvedImages = work.images.map((img) => {
           return (
             <div class="work-gallery_img-wrapper">
               <a href={`/works/${work.id}/${index}`}>
-                {/* <img
-                  src={source.thumbnail.src}
-                  alt={alt}
-                  width="100%"
-                  height="100%"
-                  loading="lazy"
-                  class="work_img"
-                /> */}
                 <Image
                   src={source.thumbnail}
                   alt={alt}

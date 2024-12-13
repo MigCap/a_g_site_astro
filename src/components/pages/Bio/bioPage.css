@@ -1,0 +1,47 @@
+.bio_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    color: var(--gray-100);
+}
+
+.bio_pic {
+    padding: 0;
+    width: 40%;
+    height: auto;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.bio_info_container {
+    padding-top: 50px;
+    color: var(--gray-500);
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.bio_info_title {
+    color: var(--gray-100);
+    font-size: 0.7rem;
+    padding-top: 1rem;
+    margin: 0;
+}
+
+.bio_info_year {
+    color: var(--gray-100);
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.bio_info_link {
+    padding: 0;
+
+    :hover {
+        color: var(--gray-200);
+    }
+}

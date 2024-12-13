@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import Alejandro_Guijarro_Bio_Pic from "../../../assets/images/Bio/2_alejandro-guijarro.jpg";
+import { bioInfo } from "@/constants/bio";
+
+import "./bioPage.css";
+
+const getFirstWord = (string: string) => {
+  if (string !== undefined) {
+    return `${string.substring(0, string.indexOf(" "))} `;
+  }
+};
+
+const getRestOfString = (string: string) => {
+  if (string !== undefined) {
+    return string.substring(string.indexOf(" ") + 1);
+  }
+};
+---
+
+<div class="bio_container">
+  <div>
+    <p>
+      Alejandro Guijarro is a London and Madrid based artist, working within
+      spaces between photography, drawing and painting. His work explores new
+      possibilities of contemporary photography, questioning its ability to
+      refer to reality or truth.{" "}
+    </p>
+    <p>
+      Since completing his MA at the Royal College of Art, he has been involved
+      in numerous exhibitions internationally and his work remains in private
+      collections, such as the Frank-Suss collection, Sammlung Goetz the Saatchi
+      Gallery.
+    </p>
+    <p>
+      Guijarro´s Practice has been featured and reviewed in the British Journal
+      of Photography, The Guardian, Wall Street journal, The Atlantic, Harvard
+      Business review among others.
+    </p>
+  </div>
+  <Image
+    src={Alejandro_Guijarro_Bio_Pic}
+    alt="Alejandro Guijarro profile pic"
+    loading="eager"
+    class="bio_pic"
+  />
+</div>
+<div class="bio_info_container">
+  {
+    bioInfo.map((info) => (
+      <div>
+        <h1 class="bio_info_title">{info.title}</h1>
+
+        {info.values.map((data: any) => (
+          <div>
+            <h5
+              class="bio_info_year"
+              aria-label="Date of current biography information"
+            >
+              {data.year && data.year}
+            </h5>
+            <div class="exhibitions">
+              {data.exhibitions &&
+                data.exhibitions.map((exhibition: any) => <p>{exhibition}</p>)}
+            </div>
+            <div class="collections-education-awards-and-grants">
+              {!data.exhibitions && !data.text && (
+                <p>
+                  {info.title === "AWARDS & GRANTS" ? (
+                    <span style={{ color: "black" }}>{getFirstWord(data)}</span>
+                  ) : (
+                    getFirstWord(data)
+                  )}
+                  {getRestOfString(data)}
+                </p>
+              )}
+            </div>
+            <div class="selected-press-and-publications">
+              {data.text && data.src ? (
+                <a
+                  href={data.src}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Read more about Selected Press or Publication"
+                  class="bio_info_link"
+                >
+                  <p>
+                    <span style={{ color: "black" }}>
+                      {getFirstWord(data.text)}
+                    </span>
+                    {getRestOfString(data.text)}
+                  </p>
+                </a>
+              ) : (
+                <p>
+                  <span style={{ color: "black" }}>
+                    {getFirstWord(data.text)}
+                  </span>
+                  {getRestOfString(data.text)}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    ))
+  }
+</div>
