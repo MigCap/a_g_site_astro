@@ -78,7 +78,7 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
 <Layout isWorkPage={true}>
   <div class="work_container">
     <div
-      class="wor_img_wrapper"
+      class="work_img_wrapper"
       id="swipe-container"
       data-work-id={work.id}
       data-prev-index={prevImageIndex}
@@ -145,6 +145,7 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
   function handleTouchStart(e) {
     const touch = e.touches[0];
     startX = touch.clientX;
+    endX = startX; // Initialize endX with startX to prevent false triggers
     isSwiping = true; // Indicate that a swipe has started
   }
 
@@ -183,31 +184,45 @@ const nextImageIndex = workId === resolvedImages.length - 1 ? 0 : workId + 1;
     align-items: center;
     padding: 2rem 5rem;
   }
+
   .work_navigation {
     display: flex;
     justify-content: center;
     gap: 3rem;
     padding: 1rem 0;
   }
-  .wor_img_wrapper {
+
+  .work_img_wrapper {
     height: 65vh;
     width: 100%;
     display: flex;
     justify-content: center;
     overflow: hidden;
   }
+
   .work_img {
     width: 100%;
     height: auto;
     object-fit: contain;
   }
+
   .img_title {
     font-size: 0.7rem;
     font-weight: 900;
     margin: 1rem 0 0 0;
   }
+
   .img_caption {
     font-size: 0.7rem;
     margin: 1rem 0;
+  }
+
+  @media (max-width: 30em) {
+    .work_container {
+      padding: 0 1rem;
+    }
+    .work_img_wrapper {
+      height: 45vh;
+    }
   }
 </style>

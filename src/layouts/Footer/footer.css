@@ -21,57 +21,8 @@
     text-align: center;
     z-index: 100;
     border-top: solid 0.5px var(--gray-500);
-    margin-top: 50px;
-    padding-top: 20px;
-}
-
-@media (max-width: 75em) {
-    #footer_container {
-        margin: 0 auto;
-        padding: 50px 60px;
-    }
-
-    .footer_section {
-        padding: 1rem 0px 5rem;
-    }
-}
-
-@media (max-width: 48em) {
-    .footer_section {
-        padding: 1rem 0px 4rem;
-        grid-template-areas:
-            "instagram nav backToTop"
-            "rights rights rights";
-    }
-
-    .footer_nav {
-        justify-self: center;
-    }
-
-    .footer_rights {
-        justify-self: center;
-    }
-}
-
-@media (max-width: 30em) {
-    .footer_section {
-        padding: 1rem 0px 4rem;
-        grid-template-rows: auto 70px 20px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "nav nav"
-            "instagram backToTop"
-            "rights rights rights";
-    }
-
-    .footer_social-icons {
-        justify-self: center;
-    }
-
-    .footer_nav {
-        grid-row: 1;
-        grid-column: 1 / span 3;
-    }
+    /* margin-top: 50px; */
+        /* padding-top: 20px; */
 }
 
 .footer_social-icons {
@@ -158,5 +109,59 @@
                 color: var(--gray-0);
             }
         }
+    }
+}
+
+@media (max-width: 75em) {
+    #footer_container {
+        margin: 0 auto;
+        padding: 50px 60px;
+    }
+
+    .footer_section {
+        padding: 1rem 0px 5rem;
+    }
+}
+
+@media (max-width: 48em) {
+    .footer_section {
+        padding: 1rem 0px 4rem;
+        grid-template-areas:
+            "instagram nav backToTop"
+            "rights rights rights";
+    }
+
+    .footer_nav {
+        justify-self: center;
+    }
+
+    .footer_rights {
+        justify-self: center;
+    }
+}
+
+@media (max-width: 30em) {
+    #footer_container {
+        max-width: 1500px;
+        padding: 10px 20px 40px 20px;
+    }
+
+    .footer_section {
+        padding: 1rem 0px 4rem;
+        grid-template-rows: auto 70px 20px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "nav nav"
+            "instagram backToTop"
+            "rights rights rights";
+    }
+
+    .footer_social-icons {
+        justify-self: center;
+    }
+
+    .footer_nav {
+        grid-row: 1;
+        grid-column: 1 / span 3;
     }
 }

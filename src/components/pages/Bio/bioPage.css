@@ -45,3 +45,14 @@
         color: var(--gray-200);
     }
 }
+
+@media (max-width: 30em) {
+    .bio_container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .bio_pic {
+        width: 100%;
+    }
+}
