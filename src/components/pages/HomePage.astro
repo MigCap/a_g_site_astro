@@ -1,13 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import Adam_and_Eve from "../../assets/images/Lead/P01692a00xf2006_(Adam_and_Eve).jpg";
+import { homePagePic } from "@/constants/images";
+import Adam_and_Eve from "@/assets/images/Lead/P01692a00xf2006_(Adam_and_Eve).jpg";
 ---
 
 <main id="main-home">
   <div class="img-wrapper">
     <Image
       src={Adam_and_Eve}
-      alt="Alejandro Guijarro - Adam and Eve"
+      alt={homePagePic.alt}
+      width={homePagePic.width}
+      height={homePagePic.height}
       fetchpriority="high"
       loading="eager"
     />

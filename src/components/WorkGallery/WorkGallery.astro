@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import type { IWork } from "@/constants/images";
+import type { Work } from "@/constants/images";
 import "./work-gallery.css";
 
 interface Props {
-  work: IWork;
+  work: Work;
 }
 
 const { work } = Astro.props;
@@ -40,7 +40,7 @@ const resolvedImages = work.images.map((img) => {
   <h1>{work.title}</h1>
   <div class="work-gallery_container">
     {
-      resolvedImages?.map(({ alt, source, height }, index: number) => {
+      resolvedImages?.map(({ alt, source, width, height }, index: number) => {
         if (index < 12) {
           return (
             <div class="work-gallery_img-wrapper">
@@ -48,15 +48,11 @@ const resolvedImages = work.images.map((img) => {
                 <Image
                   src={source.thumbnail}
                   alt={alt}
+                  width={width}
+                  height={height}
                   class="work_img"
                   loading="lazy"
                 />
-                {/* <Picture
-                  src={source.thumbnail}
-                  formats={["avif", "webp"]}
-                  alt={alt}
-                  class="work_img"
-                /> */}
               </a>
             </div>
           );

@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import Alejandro_Guijarro_Bio_Pic from "../../../assets/images/Bio/2_alejandro-guijarro.jpg";
 import { bioInfo } from "@/constants/bio";
+import { bioPic } from "@/constants/images";
+import Alejandro_Guijarro_Bio_Pic from "../../../assets/images/Bio/2_alejandro-guijarro.jpg";
 
 import "./bioPage.css";
 
@@ -40,7 +41,10 @@ const getRestOfString = (string: string) => {
   </div>
   <Image
     src={Alejandro_Guijarro_Bio_Pic}
-    alt="Alejandro Guijarro profile pic"
+    alt={bioPic.alt}
+    width={bioPic.width}
+    height={bioPic.height}
+    fetchpriority="high"
     loading="eager"
     class="bio_pic"
   />
