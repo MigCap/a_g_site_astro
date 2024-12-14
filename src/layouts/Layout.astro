@@ -25,11 +25,9 @@ const { title, description, isWorkPage = false } = props;
       class={!isWorkPage ? "site-container" : "site-container-work"}
       tabindex="-1"
     >
-      <!-- <div class={!isWorkPage ? "site-wrapper" : ""}> -->
       {!isWorkPage && <NavBar />}
       <slot />
       {!isHomePage && <Footer />}
-      <!-- </div> -->
     </div>
   </body>
 </html>
@@ -45,9 +43,6 @@ const { title, description, isWorkPage = false } = props;
     min-height: 100dvh;
     grid-template-rows: 1fr auto;
   }
-  /* .site-wrapper {
-    padding-top: calc(var(--nav-height) + 1.5rem);
-  } */
 
   @media (max-width: 75em) {
     .site-wrapper {
