@@ -12,8 +12,10 @@ interface Props {
 const { url, props } = Astro;
 const isHomePage = url.pathname === "/";
 const isContactPage = url.pathname === "/contact";
+const shouldAddFooter = !isHomePage && !isContactPage;
 
 const { title, description, isWorkPage = false } = props;
+const shouldAddNavBar = !isWorkPage;
 ---
 
 <!doctype html>
@@ -26,9 +28,9 @@ const { title, description, isWorkPage = false } = props;
       class={!isWorkPage ? "site-container" : "site-container-work"}
       tabindex="-1"
     >
-      {!isWorkPage && <NavBar />}
+      {shouldAddNavBar && <NavBar />}
       <slot />
-      {!isHomePage && !isContactPage && <Footer />}
+      {shouldAddFooter && <Footer />}
     </div>
   </body>
 </html>

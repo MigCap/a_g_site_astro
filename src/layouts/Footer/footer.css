@@ -21,8 +21,6 @@
     text-align: center;
     z-index: 100;
     border-top: solid 0.5px var(--gray-500);
-    /* margin-top: 50px; */
-        /* padding-top: 20px; */
 }
 
 .footer_social-icons {
@@ -34,9 +32,9 @@
         width: 1.2rem;
         color: var(--gray-100);
 
-        :hover {
+        &:hover {
             transition: var(--transition);
-            color: var(--gray-0);
+            color: var(--gray-200);
         }
     }
 }
@@ -78,15 +76,10 @@
             }
 
             a {
-                :hover {
+                &:hover {
                     transition: var(--transition);
                     color: var(--gray-0);
                 }
-            }
-
-            .active {
-                font-weight: 900;
-                color: var(--gray-0);
             }
         }
     }
@@ -104,7 +97,7 @@
         padding: 0 5px;
 
         a {
-            :hover {
+            &:hover {
                 transition: var(--transition);
                 color: var(--gray-0);
             }

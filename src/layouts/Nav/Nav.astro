@@ -1,35 +1,27 @@
 ---
+import NavLink from "@/components/NavLink/NavLink.astro";
 import "./nav.css";
-
-const { url } = Astro;
 ---
 
-<nav-bar id="nav-bar">
-  <div id="nav-bar_container" class="active">
-    <a href="/" class="nav-bar_title">
-      <h3>ALEJANDRO GUIJARRO</h3>
-    </a>
-    <div class="nav-bar_list_container">
-      <ul>
-        <li>
-          <a href="/works" class={url.pathname === "/works" ? "active" : ""}
-            >Works</a
-          >
-        </li>
-        <li>
-          <a href="/bio" class={url.pathname === "/bio" ? "active" : ""}>Bio</a>
-        </li>
-        <li>
-          <a href="/contact" class={url.pathname === "/contact" ? "active" : ""}
-            >Contact</a
-          >
-        </li>
-      </ul>
-    </div>
+<div id="nav-bar_container">
+  <a href="/" class="nav-bar_title">
+    <h3>ALEJANDRO GUIJARRO</h3>
+  </a>
+  <div class="nav-bar_list_container">
+    <ul>
+      <li>
+        <NavLink href="/works" label="Works" />
+      </li>
+      <li>
+        <NavLink href="/bio" label="Bio" />
+      </li>
+      <li>
+        <NavLink href="/contact" label="Contact" />
+      </li>
+    </ul>
   </div>
-</nav-bar>
+</div>
 
 <script>
-  import { NavBar } from "./Nav.ts";
-  new NavBar();
+  import "./Nav.ts";
 </script>

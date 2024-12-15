@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { pathname } = Astro.url;
+const { href, label } = Astro.props;
+
+function isActive() {
+  return href === pathname || href === pathname.replace(/\/$/, "");
+}
+---
+
+<a href={href} class:list={["nav-link", { active: isActive() }]}>{label}</a>
+
+<style>
+  .nav-link.active {
+    font-weight: 900;
+    color: var(--gray-0);
+  }
+</style>

@@ -1,68 +1,63 @@
-export class NavBar extends HTMLElement {
-  private lastScrollTop: number;
-  private navBar: HTMLElement | null;
-  private navBarContainer: HTMLElement | null;
-  private isHomePage: boolean;
+function runNav() {
+  const navBarContainer = document.getElementById("nav-bar_container")!;
+  let lastScrollTop = 0;
+  const isHomePage = true;
 
-  constructor() {
-    super();
-
-    this.navBar = document.getElementById("nav-bar")!;
-    this.navBarContainer = document.getElementById("nav-bar_container")!;
-    this.lastScrollTop = 0;
-    this.isHomePage = true;
-
-    if (!this.navBar || !this.navBarContainer) {
-      console.error(`Navbar elements not found.`);
-      return;
-    }
-
-    window.addEventListener("scroll", this.handleScroll.bind(this));
-    this.addListeners();
+  if (!navBarContainer) {
+    console.error(`Navbar elements not found.`);
+    return;
   }
 
-  addListeners() {
-    if (this.isHomePage || !this.navBar || !this.navBarContainer) return;
-    window.addEventListener("DOMContentLoaded", () => this.handleScroll());
-    document.addEventListener("astro:after-swap", () => this.handleScroll());
+  function addListeners() {
+    if (isHomePage || !navBarContainer) return;
+
+    window.addEventListener("DOMContentLoaded", () => handleScroll());
+    document.addEventListener("astro:after-swap", () => handleScroll());
   }
 
-  private handleScroll(): void {
+  function handleScroll(): void {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
     if (scrollTop !== 0) {
-      this.addBoxShadow();
+      addBoxShadow();
     }
     if (scrollTop === 0) {
-      this.removeBoxShadow();
+      removeBoxShadow();
     }
-    if (scrollTop > this.lastScrollTop) {
-      this.removeBoxShadow();
-      this.hideNavBar();
+
+    if (scrollTop > lastScrollTop) {
+      removeBoxShadow();
+      hideNavBar();
     } else {
-      this.showNavBar();
+      showNavBar();
     }
-    this.lastScrollTop = scrollTop;
+
+    lastScrollTop = scrollTop;
   }
 
-  private showNavBar(): void {
-    if (!this.navBar || !this.navBarContainer) return;
-    this.navBarContainer.classList.remove("hidden");
-    this.navBarContainer.classList.add("active");
+  function showNavBar(): void {
+    if (!navBarContainer) return;
+    navBarContainer.classList.remove("hidden");
+    navBarContainer.classList.add("active");
   }
-  private hideNavBar(): void {
-    if (!this.navBar || !this.navBarContainer) return;
-    this.navBarContainer.classList.remove("active");
-    this.navBarContainer.classList.add("hidden");
+  function hideNavBar(): void {
+    if (!navBarContainer) return;
+    navBarContainer.classList.remove("active");
+    navBarContainer.classList.add("hidden");
   }
 
-  private addBoxShadow(): void {
-    if (!this.navBarContainer) return;
-    this.navBarContainer.classList.add("box-shadow");
+  function addBoxShadow(): void {
+    if (!navBarContainer) return;
+    navBarContainer.classList.add("box-shadow");
   }
-  private removeBoxShadow(): void {
-    if (!this.navBarContainer) return;
-    this.navBarContainer.classList.remove("box-shadow");
+  function removeBoxShadow(): void {
+    if (!navBarContainer) return;
+    navBarContainer.classList.remove("box-shadow");
   }
+
+  window.addEventListener("scroll", () => handleScroll());
+
+  addListeners();
 }
 
-customElements.define("nav-bar", NavBar);
+runNav();

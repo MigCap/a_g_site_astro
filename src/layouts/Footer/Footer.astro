@@ -1,9 +1,8 @@
 ---
 import Rights from "@/components/Rights/Rights.astro";
 import Instagram from "@/components/icons/Instagram.astro";
+import NavLink from "@/components/NavLink/NavLink.astro";
 import "./footer.css";
-
-const { url } = Astro;
 ---
 
 <footer id="footer_container">
@@ -24,20 +23,16 @@ const { url } = Astro;
     <nav class="footer_nav">
       <ul>
         <li>
-          <a href="/" class={url.pathname === "/" ? "active" : ""}>Home</a>
+          <NavLink href="/" label="Home" />
         </li>
         <li>
-          <a href="/works" class={url.pathname === "/works" ? "active" : ""}
-            >Works</a
-          >
+          <NavLink href="/works" label="Works" />
         </li>
         <li>
-          <a href="/bio" class={url.pathname === "/bio" ? "active" : ""}>Bio</a>
+          <NavLink href="/bio" label="Bio" />
         </li>
         <li>
-          <a href="/contact" class={url.pathname === "/contact" ? "active" : ""}
-            >Contact</a
-          >
+          <NavLink href="/contact" label="Contact" />
         </li>
       </ul>
     </nav>

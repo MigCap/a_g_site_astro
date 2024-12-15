@@ -1119,6 +1119,6 @@ export const bioPic: Image = {
   },
   width: 1118,
   height: 837,
-  alt: "Alejandro Guijarro - Profile picture",
-  caption: "Alejandro Guijarro - Profile picture",
+  alt: "Alejandro Guijarro",
+  caption: "Alejandro Guijarro",
 };
