@@ -44,9 +44,19 @@ import Instagram from "@/components/icons/Instagram.astro";
 
         svg {
             width: 0.7rem;
+            color: var(--gray-100);
+            :hover {
+              transition: var(--transition);
+              color: ${colors.black};
+            }
         }
         p {
+            color: var(--gray-100);
             font-size: 0.7rem;
+            :hover {
+              transition: var(--transition);
+              color: ${colors.black};
+            }
         }
     }
   }

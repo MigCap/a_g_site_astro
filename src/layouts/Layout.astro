@@ -11,6 +11,7 @@ interface Props {
 
 const { url, props } = Astro;
 const isHomePage = url.pathname === "/";
+const isContactPage = url.pathname === "/contact";
 
 const { title, description, isWorkPage = false } = props;
 ---
@@ -27,7 +28,7 @@ const { title, description, isWorkPage = false } = props;
     >
       {!isWorkPage && <NavBar />}
       <slot />
-      {!isHomePage && <Footer />}
+      {!isHomePage && !isContactPage && <Footer />}
     </div>
   </body>
 </html>
