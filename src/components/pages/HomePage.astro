@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { homePagePic } from "@/constants/images";
 import Adam_and_Eve from "@/assets/images/Lead/P01692a00xf2006_(Adam_and_Eve).jpg";
+import Rights from "@/components/Rights/Rights.astro";
 ---
 
 <main id="main-home">
@@ -16,20 +17,7 @@ import Adam_and_Eve from "@/assets/images/Lead/P01692a00xf2006_(Adam_and_Eve).jp
     />
   </div>
   <div class="rights">
-    <p>
-      &copy; {new Date().getFullYear()} Alejandro Guijarro All Rights Reserved.
-    </p>
-    <p>
-      Designed & built by{" "}
-      <a
-        href="https://www.miguelcapellan.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="MCV- Link that redirects to builder's site"
-      >
-        MCV
-      </a>
-    </p>
+    <Rights />
   </div>
 </main>
 
@@ -52,7 +40,7 @@ import Adam_and_Eve from "@/assets/images/Lead/P01692a00xf2006_(Adam_and_Eve).jp
     max-height: 70vh;
   }
 
-  .rights {
+  :global(.rights) {
     text-align: center;
     padding-top: 3rem;
     font-size: 0.6rem;

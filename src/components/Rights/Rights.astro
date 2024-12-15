@@ -1,0 +1,35 @@
+---
+interface Props {
+    isHomePage?: boolean;
+}
+
+const {isHomePage = false} = Astro.props
+---
+{!isHomePage && (
+<p>
+    &copy; {new Date().getFullYear()} Alejandro Guijarro All Rights Reserved.
+    Designed & built by{" "}
+    <a
+      href="https://www.miguelcapellan.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="MCV- Link that redirects to builder's site"
+    >
+      MCV
+    </a>
+  </p>
+)}
+{isHomePage &&(<p>
+  &copy; {new Date().getFullYear()} Alejandro Guijarro All Rights Reserved.
+</p>
+<p>
+  Designed & built by{" "}
+  <a
+    href="https://www.miguelcapellan.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MCV- Link that redirects to builder's site"
+  >
+    MCV
+  </a>
+</p>)}
