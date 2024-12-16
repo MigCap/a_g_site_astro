@@ -63,6 +63,10 @@
     }
   }
 
+  .box-shadow {
+    box-shadow: var(--box-shadow);
+  }
+
   @media (max-width: 30em) {
     #nav-bar_container {
       min-height: calc(var(--nav-height));
