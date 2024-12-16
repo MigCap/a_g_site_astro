@@ -4,7 +4,7 @@
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    color: var(--gray-100);
+    color: var(--grey);
 }
 
 .bio_pic {
@@ -17,7 +17,7 @@
 
 .bio_info_container {
     padding-top: 50px;
-    color: var(--gray-500);
+    color: var(--grey);
 
     p {
         padding: 0;
@@ -26,14 +26,14 @@
 }
 
 .bio_info_title {
-    color: var(--gray-100);
+    color: var(--grey);
     font-size: 0.7rem;
     padding-top: 1rem;
     margin: 0;
 }
 
 .bio_info_year {
-    color: var(--gray-100);
+    color: var(--grey);
     padding: 0.5rem 0;
     margin: 0;
 }
@@ -42,7 +42,7 @@
     padding: 0;
 
     :hover {
-        color: var(--gray-200);
+        color: var(--grey);
     }
 }
 

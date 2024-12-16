@@ -4,7 +4,7 @@ import Instagram from "@/components/icons/Instagram.astro";
 ---
 
 <div class="contact_container">
-  <p style={{ color: "#181818", fontWeight: "bold" }}>Studio</p>
+  <p style={{ color: "var(--black)", fontWeight: "bold" }}>Studio</p>
   <p class="contact_mail">contact@alejandroguijarro.com</p>
   <a
     class="contact_social_link"
@@ -27,7 +27,7 @@ import Instagram from "@/components/icons/Instagram.astro";
     max-height: calc(100vh - var(--nav-height));
     text-align: center;
     padding-top: 2rem;
-    color: var(--gray-300);
+    color: var(--grey);
 
     p {
         padding: 0;
@@ -35,7 +35,7 @@ import Instagram from "@/components/icons/Instagram.astro";
 
     a {
         font-size: 0.2rem;
-        color: var(--gray-100);
+        color: var(--grey);
         padding: 0.5rem 0;
         :hover {
           transition: var(--transition);
@@ -44,14 +44,14 @@ import Instagram from "@/components/icons/Instagram.astro";
 
         svg {
             width: 0.7rem;
-            color: var(--gray-100);
+            color: var(--grey);
             :hover {
               transition: var(--transition);
               color: ${colors.black};
             }
         }
         p {
-            color: var(--gray-100);
+            color: var(--grey);
             font-size: 0.7rem;
             :hover {
               transition: var(--transition);
@@ -68,19 +68,19 @@ import Instagram from "@/components/icons/Instagram.astro";
     :hover {
       transition: var(--transition);
       p {
-        color: var(--gray-50);
+        color: var(--black);
       }
       svg {
-        color: var(--gray-50);
+        color: var(--black);
       }
     }
 
     svg {
-      color: var(--gray-300);
+      color: var(--grey);
     }
 
     p {
-      color: var(--gray-300);
+      color: var(--grey);
     }
   }
 
@@ -93,14 +93,14 @@ import Instagram from "@/components/icons/Instagram.astro";
     font-size: .8rem;
 
     p {
-      color: var(--gray-300);
+      color: var(--grey);
       padding: 0 5px;
       a {
         font-size: 0.7rem;
-        color: var(--gray-300);
+        color: var(--grey);
         :hover {
           transition: var(--transition);
-          color: var(--gray-50);
+          color: var(--black);
         }
       }
     }

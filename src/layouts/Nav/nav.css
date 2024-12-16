@@ -22,14 +22,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    color: var(--gray-200);
+    color: var(--grey);
     background-color: white;
     text-align: center;
     z-index: 1000;
   }
 
   .nav-bar_title {
-    color: var(--gray-200);
+    color: var(--grey);
     letter-spacing: 0.4rem;
     padding-top: 0.5rem;
     text-align: center;
@@ -38,7 +38,7 @@
 
     :hover {
       transition: var(--transition);
-      color: var(--gray-600);
+      color: var(--light-grey);
     }
   }
 
@@ -51,12 +51,12 @@
       li {
         padding: 0 10px;
         a {
-          color: var(--gray-200);
+          color: var(--grey);
           font-size: 0.7rem;
           font-weight: normal;
           &:hover {
             transition: var(--transition);
-            color: var(--gray-0);
+            color: var(--black);
           }
         }
       }

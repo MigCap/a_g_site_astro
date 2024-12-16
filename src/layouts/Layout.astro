@@ -10,12 +10,16 @@ interface Props {
 }
 
 const { url, props } = Astro;
+const { title, description, isWorkPage = false } = props;
+
 const isHomePage = url.pathname === "/";
 const isContactPage = url.pathname === "/contact";
 const shouldAddFooter = !isHomePage && !isContactPage;
-
-const { title, description, isWorkPage = false } = props;
 const shouldAddNavBar = !isWorkPage;
+
+const siteContainerClass = shouldAddNavBar
+  ? "site-container"
+  : "site-container-work";
 ---
 
 <!doctype html>
@@ -24,10 +28,7 @@ const shouldAddNavBar = !isWorkPage;
     <MainHead title={title} description={description} />
   </head>
   <body>
-    <div
-      class={!isWorkPage ? "site-container" : "site-container-work"}
-      tabindex="-1"
-    >
+    <div class={siteContainerClass} tabindex="-1">
       {shouldAddNavBar && <NavBar />}
       <slot />
       {shouldAddFooter && <Footer />}
@@ -48,7 +49,7 @@ const shouldAddNavBar = !isWorkPage;
   }
 
   @media (max-width: 75em) {
-    .site-wrapper {
+    .site-container {
       padding-top: calc(var(--nav-height) + 0.5rem);
     }
   }
